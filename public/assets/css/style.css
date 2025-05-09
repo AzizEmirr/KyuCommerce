@@ -1,0 +1,48 @@
+@media (max-width: 767px) {
+    .col-sm-9 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .banner-image {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+}
+
+.banner-image {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #ccc;
+    object-fit: cover;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shake {
+    animation: shake 0.3s;
+    animation-iteration-count: 1;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

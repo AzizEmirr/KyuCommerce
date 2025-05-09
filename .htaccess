@@ -1,0 +1,48 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ /public/$1 [L]
+</IfModule>
+
+# ErrorDocument ayarları
+ErrorDocument 400 /error
+ErrorDocument 401 /error
+ErrorDocument 403 /error
+ErrorDocument 404 /error
+ErrorDocument 500 /error
+
+# HTTP/2 Protokolü desteği
+<IfModule mod_http2.c>
+    Protocols h2 http/1.1
+</IfModule>
+
+# Strict Transport Security (HSTS) etkinleştirme
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+# CORS politikaları
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header set Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+
+# HTTP Method Koruması
+RewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Bot Koruması
+SetEnvIfNoCase User-Agent "HTTrack" bad_bot
+SetEnvIfNoCase User-Agent "wget" bad_bot
+SetEnvIfNoCase User-Agent "libwww-perl" bad_bot
+SetEnvIfNoCase User-Agent "lwp-trivial" bad_bot
+SetEnvIfNoCase User-Agent "curl" bad_bot
+SetEnvIfNoCase User-Agent "Python-urllib" bad_bot
+SetEnvIfNoCase User-Agent "php" bad_bot
+SetEnvIfNoCase User-Agent "PycURL" bad_bot
+SetEnvIfNoCase User-Agent "Scrapy" bad_bot
+SetEnvIfNoCase User-Agent "WebCopier" bad_bot
+SetEnvIfNoCase User-Agent "MJ12bot" bad_bot
+SetEnvIfNoCase User-Agent "Screaming Frog SEO Spider" bad_bot
+SetEnvIfNoCase User-Agent "SiteSucker" bad_bot
+
+Order Allow,Deny
+Allow from all
+Deny from env=bad_bot
