@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /.phpunit.cache
 /node_modules
 /public/build
@@ -19,6 +20,8 @@ yarn-error.log
 /.idea
 /.vscode
 =======
+=======
+>>>>>>> 540a9eb7bc5b4359d61e868c534264d00fd01fd7
 /vendor/
 node_modules/
 npm-debug.log
@@ -49,4 +52,7 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
+<<<<<<< HEAD
 >>>>>>> 17d77d9caed444e0343a5e80d36fe6eed2ff3878
+=======
+>>>>>>> 540a9eb7bc5b4359d61e868c534264d00fd01fd7
